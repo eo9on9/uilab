@@ -1,7 +1,8 @@
 'use client'
 
 import * as Popover from '@radix-ui/react-popover'
-import { useRef, useState } from 'react'
+import { ChangeEventHandler, useMemo, useRef, useState } from 'react'
+import { debounce } from './debounce'
 import { getSuggestions } from './getSuggestions'
 
 export const AutoCompletePage = () => {
@@ -13,17 +14,45 @@ export const AutoCompletePage = () => {
 
   const [options, setOptions] = useState<string[]>([])
 
-  const handleClick = async () => {
+  const [isLoading, setIsLoading] = useState(false)
+
+  const search = async (keyword: string) => {
+    console.log('=== search')
+
+    if (keyword === '') return setOptions([])
+
+    setIsLoading(true)
+
     const [_, suggestions] = await getSuggestions(keyword)
 
-    setIsOpen(true)
+    setIsLoading(false)
 
     setOptions(suggestions)
   }
 
+  const debouncedSearch = useMemo(() => debounce(search, 300), [])
+
+  const handleChange: ChangeEventHandler<HTMLInputElement> = e => {
+    console.log('=== change')
+
+    const { value } = e.target
+
+    setKeyword(value)
+
+    setIsOpen(true)
+
+    debouncedSearch(value)
+  }
+
+  const chooseOption = (o: string) => {
+    setKeyword(o)
+    setIsOpen(false)
+
+    inputRef.current?.focus()
+  }
+
   return (
     <div>
-      <button onClick={handleClick}>suggestion</button>
       <div>
         <input
           ref={inputRef}
@@ -31,7 +60,7 @@ export const AutoCompletePage = () => {
             width: '100%',
           }}
           value={keyword}
-          onChange={e => setKeyword(e.target.value)}
+          onChange={handleChange}
         />
         <Popover.Root open={isOpen} onOpenChange={setIsOpen}>
           <Popover.Trigger asChild>
@@ -39,21 +68,17 @@ export const AutoCompletePage = () => {
           </Popover.Trigger>
           <Popover.Portal>
             <Popover.Content onOpenAutoFocus={e => e.preventDefault()}>
-              <ul>
-                {options.map(o => (
-                  <li
-                    key={o}
-                    onClick={() => {
-                      setKeyword(o)
-                      setIsOpen(false)
-
-                      inputRef.current?.focus()
-                    }}
-                  >
-                    {o}
-                  </li>
-                ))}
-              </ul>
+              {isLoading ? (
+                'Loading...'
+              ) : (
+                <ul style={{ border: '1px solid skyblue' }}>
+                  {options.map(o => (
+                    <li key={o} onClick={() => chooseOption(o)}>
+                      {o}
+                    </li>
+                  ))}
+                </ul>
+              )}
             </Popover.Content>
           </Popover.Portal>
         </Popover.Root>
