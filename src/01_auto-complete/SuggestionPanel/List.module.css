@@ -1,0 +1,12 @@
+.list {
+  list-style: none;
+}
+
+.list li {
+  padding: 2px 4px;
+  cursor: pointer;
+}
+
+.list li:hover {
+  background-color: #f0f0f0;
+}
