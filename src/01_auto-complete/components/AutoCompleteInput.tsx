@@ -2,9 +2,9 @@
 
 import * as Popover from '@radix-ui/react-popover'
 import { ChangeEventHandler, useMemo, useRef, useState } from 'react'
+import { getSuggestions } from '../api/getSuggestions'
+import { debounce } from '../utils/debounce'
 import styles from './AutoCompleteInput.module.css'
-import { debounce } from './debounce'
-import { getSuggestions } from './getSuggestions'
 import { SuggestionPanel } from './SuggestionPanel'
 
 export const AutoCompleteInput = () => {

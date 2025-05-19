@@ -1,6 +1,6 @@
 'use client'
 
-import { AutoCompleteInput } from './AutoCompleteInput'
+import { AutoCompleteInput } from '../components/AutoCompleteInput'
 import styles from './AutoCompletePage.module.css'
 
 export const AutoCompletePage = () => {
