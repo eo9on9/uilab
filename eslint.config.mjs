@@ -1,10 +1,10 @@
 import js from '@eslint/js'
+import pluginNext from '@next/eslint-plugin-next'
 import eslintConfigPrettier from 'eslint-config-prettier'
 import prettierPlugin from 'eslint-plugin-prettier'
-import tseslint from 'typescript-eslint'
 import pluginReact from 'eslint-plugin-react'
 import pluginReactHooks from 'eslint-plugin-react-hooks'
-import pluginNext from '@next/eslint-plugin-next'
+import tseslint from 'typescript-eslint'
 
 export default [
   { ignores: ['dist/**'] },
@@ -29,6 +29,13 @@ export default [
       ...pluginNext.configs['core-web-vitals'].rules,
       'prettier/prettier': 'error',
       'react/react-in-jsx-scope': 'off',
+      '@typescript-eslint/no-unused-vars': [
+        'error',
+        {
+          argsIgnorePattern: '^_',
+          varsIgnorePattern: '^_',
+        },
+      ],
     },
   },
 

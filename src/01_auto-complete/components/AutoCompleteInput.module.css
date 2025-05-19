@@ -1,0 +1,11 @@
+.input {
+  width: 100%;
+  border: 2px solid black;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.PopoverContent {
+  width: var(--radix-popover-trigger-width);
+  max-height: var(--radix-popover-content-available-height);
+}
