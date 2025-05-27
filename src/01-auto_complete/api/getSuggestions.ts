@@ -14,5 +14,5 @@ export const getSuggestions = async (keyword: string): Promise<GetSuggestionsRes
     throw new Error(`${response.status}`)
   }
 
-  return response.json()
+  return await response.json()
 }
