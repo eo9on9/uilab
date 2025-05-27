@@ -1,7 +1,10 @@
 'use client'
 
 import { useEffect } from 'react'
-import { pokemonsApi } from '../api'
+import { pokemonsApi } from '../api/helper'
+
+import { PokemonList } from '../components/PokemonList'
+import style from './PokemonsPage.module.css'
 
 export const PokemonsPage = () => {
   useEffect(() => {
@@ -19,5 +22,9 @@ export const PokemonsPage = () => {
     fetch()
   }, [])
 
-  return 'PokemonsPage'
+  return (
+    <div className={style.page}>
+      <PokemonList />
+    </div>
+  )
 }
