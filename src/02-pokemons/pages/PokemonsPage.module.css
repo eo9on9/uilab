@@ -1,3 +1,11 @@
 .page {
   padding: 24px;
+
+  color: #333;
+
+  background-color: #eee;
+}
+
+.page h1 {
+  margin-bottom: 16px;
 }

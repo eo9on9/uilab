@@ -24,6 +24,7 @@ export const PokemonsPage = () => {
 
   return (
     <div className={style.page}>
+      <h1>Pokédex</h1>
       <PokemonList />
     </div>
   )
