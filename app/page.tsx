@@ -8,7 +8,7 @@ export default function Home() {
           <Link href="/01-auto_complete">01 Auto Complete</Link>
         </li>
         <li>
-          <Link href="/02-pokemons">02 Pokemons</Link>
+          <Link href="/02-pokedex">02 Pokedex</Link>
         </li>
       </ul>
     </div>

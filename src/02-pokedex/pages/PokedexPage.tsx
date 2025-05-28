@@ -3,10 +3,10 @@
 import { useEffect } from 'react'
 import { pokemonsApi } from '../api/helper'
 
-import { PokemonList } from '../components/PokemonList'
-import style from './PokemonsPage.module.css'
+import { PokeList } from '../components/PokeList'
+import style from './PokedexPage.module.css'
 
-export const PokemonsPage = () => {
+export const PokedexPage = () => {
   useEffect(() => {
     const fetch = async () => {
       try {
@@ -25,7 +25,7 @@ export const PokemonsPage = () => {
   return (
     <div className={style.page}>
       <h1>Pokédex</h1>
-      <PokemonList />
+      <PokeList />
     </div>
   )
 }

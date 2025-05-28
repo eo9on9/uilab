@@ -1,11 +1,11 @@
 import Image from 'next/image'
-import style from './PokemonCardDetail.module.css'
+import style from './PokeCardDetail.module.css'
 
-export interface PokemonCardDetailProps {
+export interface PokeCardDetailProps {
   pokedex: number
 }
 
-export const PokemonCardDetail = ({ pokedex }: PokemonCardDetailProps) => {
+export const PokeCardDetail = ({ pokedex }: PokeCardDetailProps) => {
   return (
     <div className={style.wrap}>
       <div className={style.pic}>

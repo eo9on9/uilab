@@ -1,11 +1,11 @@
-import style from './PokemonCardSummary.module.css'
+import style from './PokeCardSummary.module.css'
 
-export interface PokemonCardSummaryProps {
+export interface PokeCardSummaryProps {
   pokedex: number
   name: string
 }
 
-export const PokemonCardSummary = ({ pokedex, name }: PokemonCardSummaryProps) => {
+export const PokeCardSummary = ({ pokedex, name }: PokeCardSummaryProps) => {
   const paddedPokedex = `#${pokedex.toString().padStart(4, '0')}`
 
   return (
