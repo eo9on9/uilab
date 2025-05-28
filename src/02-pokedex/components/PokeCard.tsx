@@ -2,15 +2,22 @@ import style from './PokeCard.module.css'
 import { PokeCardDetail } from './PokeCardDetail'
 import { PokeCardSummary } from './PokeCardSummary'
 
-export const PokeCard = () => {
+interface PokeCardProps {
+  id: number
+  name: string
+}
+
+export const PokeCard = ({ id, name }: PokeCardProps) => {
+  const pokenum = id + 1
+
   return (
     <div className={style.wrap}>
       <details>
         <summary>
-          <PokeCardSummary pokedex={25} name="PIKACHU" />
+          <PokeCardSummary pokenum={pokenum} name={name} />
         </summary>
         <div>
-          <PokeCardDetail pokedex={25} />
+          <PokeCardDetail pokenum={pokenum} />
         </div>
       </details>
     </div>

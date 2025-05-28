@@ -2,15 +2,15 @@ import Image from 'next/image'
 import style from './PokeCardDetail.module.css'
 
 export interface PokeCardDetailProps {
-  pokedex: number
+  pokenum: number
 }
 
-export const PokeCardDetail = ({ pokedex }: PokeCardDetailProps) => {
+export const PokeCardDetail = ({ pokenum }: PokeCardDetailProps) => {
   return (
     <div className={style.wrap}>
       <div className={style.pic}>
         <Image
-          src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png"
+          src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokenum}.png`}
           alt="pickachu"
           width={80}
           height={80}
